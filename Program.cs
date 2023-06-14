@@ -1,5 +1,7 @@
 ﻿using Discord;
+using Discord.Net;
 using Discord.WebSocket;
+using Newtonsoft.Json;
 
 namespace RedBot
 {
@@ -12,6 +14,7 @@ namespace RedBot
         {
             _client = new DiscordSocketClient();
             _client.Log += Log;
+            _client.Ready += OnClientReady;
 
             string token = Constants.Bot.Token;
             await _client.LoginAsync(TokenType.Bot, token);
@@ -24,6 +27,24 @@ namespace RedBot
         {
             Console.WriteLine(msg);
             return Task.CompletedTask;
+        }
+
+        private async Task OnClientReady()
+        {
+            SocketGuild guild = _client.GetGuild(Constants.Guilds.TestGuild.Id);
+            SlashCommandBuilder guildCommand = new SlashCommandBuilder()
+                .WithName("ping")
+                .WithDescription("Ping Pong!");
+
+            try
+            {
+                await guild.CreateApplicationCommandAsync(guildCommand.Build());
+            }
+            catch (HttpException ex)
+            {
+                string json = JsonConvert.SerializeObject(ex);
+                await Console.Out.WriteLineAsync(json);
+            }
         }
     }
 }
