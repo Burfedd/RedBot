@@ -34,7 +34,7 @@ namespace RedBot
             _client.Ready += OnClientReady;
             _client.SlashCommandExecuted += OnSlashCommandExecuted;
 
-            string token = Constants.Bot.Token;
+            string token = Environment.GetEnvironmentVariable("BOT_KEY", EnvironmentVariableTarget.User);
             await _client.LoginAsync(TokenType.Bot, token);
             await _client.StartAsync();
 
@@ -49,14 +49,16 @@ namespace RedBot
 
         private async Task OnClientReady()
         {
-            SocketGuild guild = _client.GetGuild(Constants.Guilds.TestGuild.Id);
-            SlashCommandBuilder guildCommand = new SlashCommandBuilder()
-                .WithName("ping")
-                .WithDescription("Ping Pong!");
+            ulong guildId = ulong.Parse(Environment.GetEnvironmentVariable("GUILD_KEY", EnvironmentVariableTarget.User));
+            SocketGuild guild = _client.GetGuild(guildId);
+            SlashCommandBuilder weatherCommand = new SlashCommandBuilder()
+                .WithName("weather")
+                .WithDescription("Get weather for a specific place")
+                .AddOption("city", ApplicationCommandOptionType.String, "City to parse weather for", isRequired: true);
 
             try
             {
-                await guild.CreateApplicationCommandAsync(guildCommand.Build());
+                await guild.CreateApplicationCommandAsync(weatherCommand.Build());
             }
             catch (HttpException ex)
             {
@@ -72,9 +74,10 @@ namespace RedBot
                 case "weather":
                     {
                         IWeatherForecastService? weatherService = _serviceProvider.GetService<IWeatherForecastService>();
+                        string city = command.Data.Options.First().Value.ToString();
                         if (weatherService != null)
                         {
-                            await command.RespondAsync(weatherService.GetForecast(string.Empty));
+                            await command.RespondAsync(weatherService.GetForecast(city));
                         }
                         break;
                     }
