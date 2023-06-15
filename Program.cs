@@ -1,20 +1,37 @@
 ﻿using Discord;
 using Discord.Net;
 using Discord.WebSocket;
+using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
+using RedBot.Feature.WeatherForecast.Services;
+using RedBot.Startup;
 
 namespace RedBot
 {
     public class Program
     {
-        public DiscordSocketClient _client { get; set; }
+        private readonly IServiceProvider _serviceProvider;
+        private DiscordSocketClient? _client;
 
-        static void Main(string[] args) => new Program().MainAsync();
+        public Program()
+        {
+            _serviceProvider = CreateProvider();
+        }
+
+        static IServiceProvider CreateProvider()
+        {
+            ServiceCollection collection = new ServiceCollection();
+            DependencyInjection.AddServices(collection);
+            return collection.BuildServiceProvider();
+        }
+
+        static void Main(string[] args) => new Program().MainAsync().GetAwaiter().GetResult();
         public async Task MainAsync()
         {
             _client = new DiscordSocketClient();
             _client.Log += Log;
             _client.Ready += OnClientReady;
+            _client.SlashCommandExecuted += OnSlashCommandExecuted;
 
             string token = Constants.Bot.Token;
             await _client.LoginAsync(TokenType.Bot, token);
@@ -44,6 +61,15 @@ namespace RedBot
             {
                 string json = JsonConvert.SerializeObject(ex);
                 await Console.Out.WriteLineAsync(json);
+            }
+        }
+
+        private async Task OnSlashCommandExecuted(SocketSlashCommand command)
+        {
+            IWeatherForecastService? service = _serviceProvider.GetService<IWeatherForecastService>();
+            if (service != null)
+            {
+                await command.RespondAsync(service.GetForecast(string.Empty));
             }
         }
     }
