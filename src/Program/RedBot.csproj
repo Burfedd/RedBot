@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Features\RedBot.Feature.ShellExec\RedBot.Feature.ShellExec.csproj" />
     <ProjectReference Include="..\Features\RedBot.Feature.WeatherForecast\RedBot.Feature.WeatherForecast.csproj" />
   </ItemGroup>
 

@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedBot", "src\Program\RedBo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedBot.Feature.WeatherForecast", "src\Features\RedBot.Feature.WeatherForecast\RedBot.Feature.WeatherForecast.csproj", "{946444DE-EADB-40A1-93B6-7426D3D34D30}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedBot.Feature.ShellExec", "src\Features\RedBot.Feature.ShellExec\RedBot.Feature.ShellExec.csproj", "{5434BA5E-D78A-476B-9E31-567DFC0CB913}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{946444DE-EADB-40A1-93B6-7426D3D34D30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{946444DE-EADB-40A1-93B6-7426D3D34D30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{946444DE-EADB-40A1-93B6-7426D3D34D30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5434BA5E-D78A-476B-9E31-567DFC0CB913}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5434BA5E-D78A-476B-9E31-567DFC0CB913}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5434BA5E-D78A-476B-9E31-567DFC0CB913}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5434BA5E-D78A-476B-9E31-567DFC0CB913}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{6650014B-85F5-4242-9DD9-3BD89FAE8747} = {23C8ED5A-B650-46D1-AD73-62FA4614B5D1}
 		{946444DE-EADB-40A1-93B6-7426D3D34D30} = {FD16F2EC-F805-49CE-B31E-4D8A710F083B}
+		{5434BA5E-D78A-476B-9E31-567DFC0CB913} = {FD16F2EC-F805-49CE-B31E-4D8A710F083B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F1E3F442-E31C-45B4-9D5A-9867F5AB169F}

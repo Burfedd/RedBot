@@ -3,6 +3,7 @@ using Discord.Net;
 using Discord.WebSocket;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
+using RedBot.Feature.ShellExec.Services;
 using RedBot.Feature.WeatherForecast.Services;
 using RedBot.Startup;
 
@@ -66,10 +67,27 @@ namespace RedBot
 
         private async Task OnSlashCommandExecuted(SocketSlashCommand command)
         {
-            IWeatherForecastService? service = _serviceProvider.GetService<IWeatherForecastService>();
-            if (service != null)
+            switch (command.CommandName)
             {
-                await command.RespondAsync(service.GetForecast(string.Empty));
+                case "weather":
+                    {
+                        IWeatherForecastService? weatherService = _serviceProvider.GetService<IWeatherForecastService>();
+                        if (weatherService != null)
+                        {
+                            await command.RespondAsync(weatherService.GetForecast(string.Empty));
+                        }
+                        break;
+                    }
+                case "shell":
+                    {
+                        IShellCommandService? shellService = _serviceProvider.GetService<IShellCommandService>();
+                        if (shellService != null)
+                        {
+                            await command.RespondAsync(shellService.ExecuteCommand(string.Empty));
+                        }
+                        break;
+                    }
+                default: break;
             }
         }
     }
