@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedBot", "RedBot.csproj", "{0A769EA7-8E4B-4509-A10C-79466D3A3908}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedBot.Feature.WeatherForecast", "..\RedBot.Feature.WeatherForecast\RedBot.Feature.WeatherForecast.csproj", "{1807ABCA-99F2-4276-B70B-D27298E0539F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Program", "Program", "{23C8ED5A-B650-46D1-AD73-62FA4614B5D1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Features", "Features", "{FD16F2EC-F805-49CE-B31E-4D8A710F083B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A769EA7-8E4B-4509-A10C-79466D3A3908}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A769EA7-8E4B-4509-A10C-79466D3A3908}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A769EA7-8E4B-4509-A10C-79466D3A3908}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A769EA7-8E4B-4509-A10C-79466D3A3908}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1807ABCA-99F2-4276-B70B-D27298E0539F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1807ABCA-99F2-4276-B70B-D27298E0539F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1807ABCA-99F2-4276-B70B-D27298E0539F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1807ABCA-99F2-4276-B70B-D27298E0539F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0A769EA7-8E4B-4509-A10C-79466D3A3908} = {23C8ED5A-B650-46D1-AD73-62FA4614B5D1}
+		{1807ABCA-99F2-4276-B70B-D27298E0539F} = {FD16F2EC-F805-49CE-B31E-4D8A710F083B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F1E3F442-E31C-45B4-9D5A-9867F5AB169F}
+	EndGlobalSection
+EndGlobal

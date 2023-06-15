@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RedBot.Feature.WeatherForecast\RedBot.Feature.WeatherForecast.csproj" />
+    <ProjectReference Include="..\Features\RedBot.Feature.WeatherForecast\RedBot.Feature.WeatherForecast.csproj" />
   </ItemGroup>
 
 </Project>
